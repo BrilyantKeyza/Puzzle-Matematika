@@ -107,9 +107,15 @@ function startTimer() {
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             document.getElementById('message').innerText = "Waktu habis!";
-            nextQuestion();
+            showTimeUpModal(); // Panggil fungsi untuk menampilkan popup
         }
     }, 1000);
+}
+
+function showTimeUpModal() {
+    // Tampilkan modal waktu habis
+    const timeUpModal = document.getElementById('time-up-modal');
+    timeUpModal.style.display = "flex";
 }
 
 function addToExpression(value) {
@@ -181,7 +187,11 @@ function nextQuestion() {
         generateNumbers();
     } else {
         // Soal ke-10 selesai, cek apakah tahap masih bisa dilanjutkan
-        if (stage < 5) { showContinueModal(); } else { endGame(); }
+        if (stage < 5) { 
+            showContinueModal(); 
+        } else { 
+            endGame(); 
+        }
     }
 }
 
@@ -214,4 +224,32 @@ document.getElementById('restart-game').addEventListener('click', function() {
     document.getElementById('result-modal').style.display = "none";
     document.getElementById('game-container').style.display = "block";
     startGame();
+});
+
+// Modal Waktu Habis
+document.getElementById('restart-btn').addEventListener('click', function() {
+    document.getElementById('time-up-modal').style.display = "none"; // Tutup modal
+    resetGame(); // Fungsi untuk mengatur ulang game
+});
+
+function resetGame() {
+    score = 0;
+    stage = 1;
+    questionNumber = 1;
+    timeLeft = 20; // Atur ulang waktu
+    updateUI();
+    generateNumbers(); // Mulai ulang soal
+}
+
+// Modal Waktu Habis
+function showTimeUpModal() {
+    // Tampilkan modal waktu habis
+    const timeUpModal = document.getElementById('time-up-modal');
+    timeUpModal.style.display = "flex";
+}
+
+// Menambahkan event listener untuk menutup modal waktu habis
+document.getElementById('restart-btn').addEventListener('click', function() {
+    document.getElementById('time-up-modal').style.display = "none"; // Tutup modal
+    resetGame(); // Fungsi untuk mengatur ulang game
 });

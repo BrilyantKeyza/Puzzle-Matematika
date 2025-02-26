@@ -99,12 +99,26 @@
           <button id="continue-btn">Lanjutkan</button>
         </div>
       </div>
+      
       <!-- Modal Waktu Habis -->
       <div id="time-up-modal" class="modal" style="display: none">
         <div class="modal-content">
           <h2>Waktu Habis!</h2>
           <p>Anda telah kehabisan waktu untuk soal ini.</p>
           <button id="restart-btn">Ulangi Soal</button>
+        </div>
+      </div>
+
+      <!-- Modal Tidak Memenuhi Syarat -->
+      <!-- Modal Tidak Memenuhi Syarat -->
+      <div id="not-eligible-modal" class="modal" style="display: none">
+        <div class="modal-content">
+          <h2>Skor Tidak Cukup!</h2>
+          <p>
+            Anda perlu mendapatkan <span id="required-score"></span> poin untuk
+            melanjutkan ke tahap berikutnya.
+          </p>
+          <button id="retry-stage-btn">Ulangi Tahap Ini</button>
         </div>
       </div>
     </main>

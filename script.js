@@ -5,6 +5,9 @@ let targetNumber = 0;
 let timeLeft = 20;
 let timerInterval = null;
 
+// Skor minimum untuk melanjutkan ke tahap berikutnya
+const minScores = [0, 80, 80, 70, 60]; // Indeks 0 tidak digunakan, mulai dari tahap 1
+
 // Variabel untuk bagian ekspresi
 let operand1 = null;
 let operatorSelected = null;
@@ -187,12 +190,34 @@ function nextQuestion() {
         generateNumbers();
     } else {
         // Soal ke-10 selesai, cek apakah tahap masih bisa dilanjutkan
-        if (stage < 5) { 
-            showContinueModal(); 
-        } else { 
-            endGame(); 
-        }
+        checkStageAdvance();
     }
+}
+
+function checkStageAdvance() {
+    if (score >= minScores[stage]) {
+        // Jika skor memenuhi syarat, tampilkan modal untuk melanjutkan
+        showContinueModal();
+    } else {
+        // Jika tidak memenuhi syarat, beri tahu pemain dan ulangi tahap
+        document.getElementById('required-score').innerText = minScores[stage]; // Set skor yang dibutuhkan
+        document.getElementById('not-eligible-modal').style.display = "flex"; // Tampilkan modal
+    }
+}
+
+
+// Modal Tidak Memenuhi Syarat
+document.getElementById('retry-stage-btn').addEventListener('click', function() {
+    console.log("Tombol 'Ulangi Tahap Ini' ditekan."); // Debugging
+    document.getElementById('not-eligible-modal').style.display = "none"; // Tutup modal
+    resetStage(); // Ulangi tahap yang sama
+});
+
+function resetStage() {
+    score = 0; // Reset skor ke 0
+    questionNumber = 1; // Reset nomor soal
+    updateUI(); // Perbarui tampilan UI
+    generateNumbers(); // Mulai ulang soal di tahap yang sama
 }
 
 function updateUI() {
@@ -213,11 +238,15 @@ function showContinueModal() {
 
 document.getElementById('continue-btn').addEventListener('click', function() { 
     document.getElementById('continue-modal').style.display = "none"; 
-    stage++; questionNumber = 1; updateUI(); generateNumbers(); 
+    stage++; // Naik ke tahap berikutnya
+    questionNumber = 1; // Reset nomor soal
+    updateUI(); 
+    generateNumbers(); 
 });
 
 document.getElementById('stop-btn').addEventListener('click', function() { 
-    document.getElementById('continue-modal').style.display = "none"; endGame();
+    document.getElementById('continue-modal').style.display = "none"; 
+    endGame();
 });
 
 document.getElementById('restart-game').addEventListener('click', function() {
@@ -230,6 +259,12 @@ document.getElementById('restart-game').addEventListener('click', function() {
 document.getElementById('restart-btn').addEventListener('click', function() {
     document.getElementById('time-up-modal').style.display = "none"; // Tutup modal
     resetGame(); // Fungsi untuk mengatur ulang game
+});
+
+// Modal Tidak Memenuhi Syarat
+document.getElementById('retry-stage-btn').addEventListener('click', function() {
+    document.getElementById('not-eligible-modal').style.display = "none"; // Tutup modal
+    resetStage(); // Ulangi tahap yang sama
 });
 
 function resetGame() {
@@ -248,8 +283,8 @@ function showTimeUpModal() {
     timeUpModal.style.display = "flex";
 }
 
-// Menambahkan event listener untuk menutup modal waktu habis
-document.getElementById('restart-btn').addEventListener('click', function() {
-    document.getElementById('time-up-modal').style.display = "none"; // Tutup modal
-    resetGame(); // Fungsi untuk mengatur ulang game
+document.getElementById('retry-stage-btn').addEventListener('click', function() {
+    console.log("Tombol 'Ulangi Tahap Ini' ditekan."); // Debugging
+    document.getElementById('not-eligible-modal').style.display = "none"; // Tutup modal
+    resetStage(); // Ulangi tahap yang sama
 });

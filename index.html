@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Susun Angka</title>
+    <!-- Tautan ke file CSS eksternal -->
+    <link rel="stylesheet" href="stylee.css" />
+    <!-- Menggunakan font Poppins dari Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+
+    <!-- Main Content -->
+    <main>
+      <header class="header">
+        <a href="" class="logo">Puzzle<span>MTK</span></a>
+      </header>
+
+      <!-- Layar Sambutan Awal -->
+      <div id="start-screen" class="container">
+        <h2>Puzzle Matematika</h2>
+        <p>Kemampuan, Kecepatan, Logika</p>
+        <button id="begin-game">Mulai</button>
+      </div>
+
+      <!-- Modal Peraturan (disembunyikan dulu) -->
+      <div id="rules-modal" class="modal" style="display: none">
+        <div class="modal-content">
+          <h2>Peraturan Permainan</h2>
+          <p>
+            Gunakan angka dan operator yang tersedia untuk membentuk ekspresi
+            dengan format:
+          </p>
+          <p>
+            <strong>[Bilangan 1] [Operator] [Bilangan 2] = [Jawaban]</strong>
+          </p>
+          <p>
+            <strong>Level 1-2:</strong> Operator hanya <em>+</em> dan
+            <em>-</em> dengan waktu 20 detik per soal.<br />
+            <strong>Level 3-5:</strong> Operator <em>+, -, *, /</em> digunakan
+            dengan waktu 15 detik per soal.
+          </p>
+          <button id="back-btn">Kembali</button>
+          <button id="start-game">Lanjut</button>
+        </div>
+      </div>
+
+      <!-- Container Game (disembunyikan dulu) -->
+      <div class="container" id="game-container" style="display: none">
+        <div class="game-header">
+          <h1>Tahap : <span id="stage">1</span></h1>
+        </div>
+        <div class="game-info">
+          <p>Soal : <span id="question-number">1</span>/10</p>
+          <p>Waktu : <span id="timer">20</span> detik</p>
+          <p>Skor : <span id="score">0</span></p>
+        </div>
+        <h2>Target: <span id="target-number"></span></h2>
+        <div id="numbers-container"></div>
+
+        <!-- Container ekspresi dengan 5 kotak -->
+        <div id="expression-container">
+          <div class="exp-box" id="box1"></div>
+          <div class="exp-box" id="box2"></div>
+          <div class="exp-box" id="box3"></div>
+          <div class="exp-box" id="box4"></div>
+          <div class="exp-box" id="box5"></div>
+        </div>
+
+        <div class="controls">
+          <button id="clear">Hapus</button>
+          <button id="submit">Next</button>
+        </div>
+        <p id="message"></p>
+      </div>
+
+      <!-- Modal Hasil Akhir -->
+      <div id="result-modal" class="modal" style="display: none">
+        <div class="modal-content">
+          <h2>Permainan Selesai!</h2>
+          <p>Skor Akhir: <span id="final-score"></span></p>
+          <button id="restart-game">Main Lagi</button>
+        </div>
+      </div>
+
+      <!-- Modal Jeda di Akhir Tahap -->
+      <div id="continue-modal" class="modal" style="display: none">
+        <div class="modal-content">
+          <h2>Tahap Selesai!</h2>
+          <p>
+            Apakah Anda ingin melanjutkan ke tahap berikutnya atau berhenti?
+          </p>
+          <button id="stop-btn">Berhenti</button>
+          <button id="continue-btn">Lanjutkan</button>
+        </div>
+      </div>
+
+    <!-- Tautan ke file JavaScript eksternal -->
+    <script src="script.js"></script>
+  </body>
+</html>

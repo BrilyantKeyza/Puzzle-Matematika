@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+/* Reset dan pengaturan dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 9%;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  filter: drop-shadow(0 0 5px #09001d);
+}
+
+.logo span{
+  color: #0766AD;
+}
+
+
+/* Main content styling */
+main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  background: url(image/background3.jpg);
+  background-size: cover;
+  background-position: center;
+  pointer-events: auto;
+  transition: .3s ease;
+}
+
+/* Container untuk game dan start screen */
+.container {
+  background-color: transparent;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  top: 35%;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+
+#start-screen h2 {
+  color: white;
+  font-size: 30px;
+  
+}
+
+#start-screen p {
+  color: white;
+  padding: 12px;
+  font-size: 20px;
+}
+
+#begin-game {
+  width: 190px;
+  height: 55px;
+  background-color: #001B79;
+  border: 2px solid #fff;
+  outline: none;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #0766AD;
+  font-size: 18px;
+  color: #fff;
+  letter-spacing: 1px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .5s;
+}
+
+#begin-game:hover{
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 90%;
+  text-align: center;
+  animation: scaleIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  font-size: 40px;
+  color: #001B79;
+}
+
+.modal-content p {
+  font-size: 22px;
+  margin: 8px;
+}
+
+.modal-content #start-game {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 45px;
+  background: #001B79;
+  border: 2px solid #0766AD;
+  outline: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: .5s;
+}
+
+.modal-content #start-game:hover {
+  background: #5563DE;
+  box-shadow: none;
+}
+
+.modal-content #back-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    background: white;
+    border: 2px solid #0766AD;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #001B79;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.modal-content #back-btn:hover {
+  background: #001B79;
+  box-shadow: none;
+  color: white;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container #game-container {
+  position: relative;
+    left: -50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background: rgb(9, 0, 29);
+    transition: 0.8s ease-in-out 0.25s;
+}
+
+#game-container {
+  background: transparent;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+  margin-bottom: 20px;
+  border: 2px solid #001B79;
+  top: 20%;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+.game-header h1  {
+  font-size: 32px;
+  text-align: center;
+  background: linear-gradient(45deg, transparent, rgb(7, 102, 173), transparent);
+  border-radius: 6px;
+  color: white;
+}
+
+.game-info p {
+  font-size: 18px;
+  font-weight: 500;
+  background: #001B79;
+  border-radius: 3px;
+  padding: 10px;
+  color: white;
+  margin: 1%;
+  border-radius: 10px;
+}
+
+#game-container h2 {
+  font-size: 30px;
+  color: white;
+}
+
+/* Tampilan Timer */
+#timer {
+  font-weight: 600;
+  color: red;
+}
+
+.controls #submit {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 45px;
+  background: #001B79;
+  border: 2px solid #0766AD;
+  outline: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: .5s;
+}
+
+.controls #submit:hover {
+  background: white;
+  box-shadow: none;
+  color: #001B79;
+}
+
+.controls #clear {
+  display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    background: white;
+    border: 2px solid #0766AD;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #001B79;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    transition: .5s;
+    margin: 1%;
+}
+
+.controls #clear:hover {
+  background: #001B79;
+  box-shadow: none;
+  color: white;
+}
+
+/* Tampilan angka & operator */
+#numbers-container {
+  margin: 20px 0;
+}
+
+.number, .operator {
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 8px;
+  font-size: 20px;
+  background: #001B79;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: 2px solid #fff;
+}
+
+.number:hover, .operator:hover {
+  background: #001B79;
+}
+
+
+/* Tampilan kotak ekspresi (5 kotak) */
+#expression-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.exp-box {
+  border: 2px solid #001B79;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px;
+  min-width: 60px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #001B79;
+  background: #f0f4ff;
+}
+
+
+.modal-content #continue-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 45px;
+  background: #001B79;
+  border: 2px solid #0766AD;
+  outline: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: .5s;
+}
+
+.modal-content #continue-btn:hover {
+  background: white;
+  box-shadow: none;
+  color: #001B79;
+}
+
+.modal-content #stop-btn {
+  display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+    background: white;
+    border: 2px solid #0766AD;
+    outline: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #001B79;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    transition: .5s;
+    margin: 1%;
+}
+
+.modal-content #stop-btn:hover {
+  background: #001B79;
+  box-shadow: none;
+  color: white;
+}
+
+.modal-content #restart-game {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 45px;
+  background: #001B79;
+  border: 2px solid #0766AD;
+  outline: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: .5s;
+}
+
+.modal-content #restart-game:hover {
+  background: white;
+  box-shadow: none;
+  color: #001B79;
+}

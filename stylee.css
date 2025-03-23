@@ -393,18 +393,18 @@ main {
   align-items: center;
   width: 130px;
   height: 45px;
-  background: #EB5B00;
+  background: white;
   border: 2px solid #ff8906;
   outline: none;
   border-radius: 6px;
   text-decoration: none;
   font-size: 16px;
-  color: #fff;
+  color: #EB5B00;
   font-weight: 600;
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
   cursor: pointer;
   transition: .5s;
-    margin: 1%;
+  margin: 1%;
 }
 
 .modal-content #stop-btn:hover {

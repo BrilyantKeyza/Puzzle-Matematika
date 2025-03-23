@@ -50,7 +50,9 @@ function generateNumbers() {
     updateExpressionDisplay();
 
     let numbersContainer = document.getElementById('numbers-container');
-    numbersContainer.innerHTML = "";
+    numbersContainer.innerHTML = ""; // Kosongkan container
+    usedNumbers = []; // Reset daftar angka yang telah digunakan
+
     document.getElementById('message').innerText = "";
 
     if (timerInterval) clearInterval(timerInterval);
@@ -86,11 +88,7 @@ function generateNumbers() {
 
     // Tampilkan keempat bilangan sebagai tombol
     numbers.forEach(num => {
-        let numElement = document.createElement('span');
-        numElement.innerText = num;
-        numElement.classList.add('number');
-        numElement.addEventListener('click', () => addToExpression(num));
-        numbersContainer.appendChild(numElement);
+        addNumberElement(num);
     });
 
     // Tampilkan operator yang diperbolehkan sebagai tombol
@@ -121,6 +119,9 @@ function showTimeUpModal() {
     timeUpModal.style.display = "flex";
 }
 
+let usedNumbers = []; // Array untuk menyimpan angka yang telah digunakan
+let displayedNumbers = []; // Array untuk menyimpan urutan angka yang ditampilkan
+
 function addToExpression(value) {
     if (typeof value === "number") {
         if (operand1 === null) {
@@ -128,12 +129,27 @@ function addToExpression(value) {
         } else if (operand1 !== null && operatorSelected !== null && operand2 === null) {
             operand2 = value;
         }
+        // Hapus elemen angka dari numbers-container
+        removeNumberElement(value);
+        usedNumbers.push(value); // Simpan angka yang telah digunakan
     } else {
         if (operand1 !== null && operatorSelected === null) {
             operatorSelected = value;
         }
     }
     updateExpressionDisplay();
+}
+
+function removeNumberElement(value) {
+    const numbersContainer = document.getElementById('numbers-container');
+    const numberElements = numbersContainer.getElementsByClassName('number');
+
+    for (let i = 0; i < numberElements.length; i++) {
+        if (parseInt(numberElements[i].innerText) === value) {
+            numbersContainer.removeChild(numberElements[i]);
+            break; // Keluar dari loop setelah menghapus elemen
+        }
+    }
 }
 
 function updateExpressionDisplay() {
@@ -155,12 +171,38 @@ function updateExpressionDisplay() {
 }
 
 document.getElementById('clear').addEventListener('click', function() {
+    // Kembalikan semua angka yang telah digunakan ke numbers-container
+    usedNumbers.forEach(num => {
+        addNumberElement(num);
+    });
+    // Reset ekspresi
     operand1 = null;
     operatorSelected = null;
     operand2 = null;
     updateExpressionDisplay();
     document.getElementById('message').innerText = "";
+    usedNumbers = []; // Reset daftar angka yang telah digunakan
 });
+
+function addNumberElement(value) {
+    const numbersContainer = document.getElementById('numbers-container');
+    const numElement = document.createElement('span');
+    numElement.innerText = value;
+    numElement.classList.add('number');
+    numElement.addEventListener('click', () => addToExpression(value));
+    numbersContainer.appendChild(numElement);
+}
+
+// Fungsi untuk menyimpan urutan angka yang ditampilkan
+function saveDisplayedNumbers() {
+    const numbersContainer = document.getElementById('numbers-container');
+    displayedNumbers = Array.from(numbersContainer.getElementsByClassName('number')).map(el => parseInt(el.innerText));
+}
+
+// Panggil fungsi ini setiap kali angka ditambahkan
+function updateDisplayedNumbers() {
+    saveDisplayedNumbers();
+}
 
 document.getElementById('submit').addEventListener('click', function () {
     if (operand1 === null || operatorSelected === null || operand2 === null) {

@@ -162,12 +162,12 @@ document.getElementById('clear').addEventListener('click', function() {
     document.getElementById('message').innerText = "";
 });
 
-document.getElementById('submit').addEventListener('click', function() {
-    if (timerInterval) clearInterval(timerInterval);
+document.getElementById('submit').addEventListener('click', function () {
     if (operand1 === null || operatorSelected === null || operand2 === null) {
         document.getElementById('message').innerText = "Lengkapi ekspresi!";
         return;
     }
+
     try {
         let result = eval(operand1 + operatorSelected + operand2);
         if (result === targetNumber) {
@@ -176,11 +176,16 @@ document.getElementById('submit').addEventListener('click', function() {
         } else {
             document.getElementById('message').innerText = "Jawaban salah!";
         }
+
+        // Timer dihentikan hanya setelah jawaban diperiksa
+        if (timerInterval) clearInterval(timerInterval);
+        
         nextQuestion();
     } catch (e) {
         document.getElementById('message').innerText = "Ekspresi tidak valid!";
     }
 });
+
 
 function nextQuestion() {
     if (timerInterval) clearInterval(timerInterval);

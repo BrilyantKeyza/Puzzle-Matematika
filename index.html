@@ -17,13 +17,14 @@
 
     <!-- Main Content -->
     <main>
-      <header class="header">
-        <a href="" class="logo">Puzzle<span>MTK</span></a>
-      </header>
-
+      <video autoplay muted loop id="background-video">
+        <source src="image/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
       <!-- Layar Sambutan Awal -->
       <div id="start-screen" class="container">
-        <h2>Puzzle Matematika</h2>
+        <a href="" class="logo">Puzzle <span>Matematika</span></a>
         <p>Kemampuan, Kecepatan, Logika</p>
         <button id="begin-game">Mulai</button>
       </div>
@@ -32,21 +33,16 @@
       <div id="rules-modal" class="modal" style="display: none">
         <div class="modal-content">
           <h2>Peraturan Permainan</h2>
-          <p>
-            Gunakan angka dan operator yang tersedia untuk membentuk ekspresi
-            dengan format:
-          </p>
-          <p>
-            <strong>[Bilangan 1] [Operator] [Bilangan 2] = [Jawaban]</strong>
-          </p>
-          <p>
-            <strong>Level 1-2:</strong> Operator hanya <em>+</em> dan
-            <em>-</em> dengan waktu 20 detik per soal.<br />
-            <strong>Level 3-5:</strong> Operator <em>+, -, *, /</em> digunakan
-            dengan waktu 15 detik per soal.
-          </p>
-          <button id="back-btn">Kembali</button>
-          <button id="start-game">Lanjut</button>
+          <span class="info">1. Dilarang membuka internet.</span>
+          <span class="info">2. Dilarang untuk saling bekerja sama</span>
+          <span class="info">3. Dilarang untuk merekam jawaban.</span>
+          <span class="info">4. Dilarang meminta atau menerima jawaban.</span>
+          <span class="info">5. Dilarang mencontek.</span>
+
+          <div class="btn-group">
+            <button id="back-btn">Kembali</button>
+            <button id="start-game">Lanjut</button>
+          </div>
         </div>
       </div>
 
@@ -60,7 +56,7 @@
           <p>Waktu : <span id="timer">20</span> detik</p>
           <p>Skor : <span id="score">0</span></p>
         </div>
-        <h2>Target: <span id="target-number"></span></h2>
+        <h2>Hasil: <span id="target-number"></span></h2>
         <div id="numbers-container"></div>
 
         <!-- Container ekspresi dengan 5 kotak -->
@@ -99,17 +95,16 @@
           <button id="continue-btn">Lanjutkan</button>
         </div>
       </div>
-      
+
       <!-- Modal Waktu Habis -->
       <div id="time-up-modal" class="modal" style="display: none">
         <div class="modal-content">
           <h2>Waktu Habis!</h2>
-          <p>Anda telah kehabisan waktu untuk soal ini.</p>
-          <button id="restart-btn">Ulangi Soal</button>
+          <p>Anda telah kehabisan waktu.</p>
+          <button id="restart-btn">Ulangi</button>
         </div>
       </div>
 
-      <!-- Modal Tidak Memenuhi Syarat -->
       <!-- Modal Tidak Memenuhi Syarat -->
       <div id="not-eligible-modal" class="modal" style="display: none">
         <div class="modal-content">

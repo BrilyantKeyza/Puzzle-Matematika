@@ -13,31 +13,26 @@ body {
   min-height: 100vh;
 }
 
-.header{
+.logo {
+  font-size: 40px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.logo span{
+  color: #ff8906;
+}
+
+#background-video {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 9%;
-  background: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
+  height: 100%;
+  object-fit: cover; /* Agar video menyesuaikan ukuran layar */
+  z-index: -1; /* Agar tidak menutupi konten */
 }
-
-.logo {
-  font-size: 32px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  filter: drop-shadow(0 0 5px #09001d);
-}
-
-.logo span{
-  color: #0766AD;
-}
-
 
 /* Main content styling */
 main {
@@ -48,7 +43,7 @@ main {
   align-items: center;
   padding: 20px;
   min-height: 100vh;
-  background: url(image/background3.jpg);
+  background-image: url(image/background.mp4);
   background-size: cover;
   background-position: center;
   pointer-events: auto;
@@ -67,12 +62,6 @@ main {
   align-items: center;
 }
 
-#start-screen h2 {
-  color: white;
-  font-size: 30px;
-  
-}
-
 #start-screen p {
   color: white;
   padding: 12px;
@@ -82,11 +71,11 @@ main {
 #begin-game {
   width: 190px;
   height: 55px;
-  background-color: #001B79;
+  background-color: #ff8906;
   border: 2px solid #fff;
   outline: none;
   border-radius: 6px;
-  box-shadow: 0 0 10px #0766AD;
+  box-shadow: 0 0 10px #EB5B00;
   font-size: 18px;
   color: #fff;
   letter-spacing: 1px;
@@ -123,14 +112,32 @@ main {
   animation: scaleIn 0.3s ease-in-out;
 }
 
+.modal-content .info {
+  display:  flex;
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+  margin: 10px 0;
+  padding: 2px;
+}
+
 .modal-content h2 {
   font-size: 40px;
-  color: #001B79;
+  color: #EB5B00;
 }
 
 .modal-content p {
   font-size: 22px;
   margin: 8px;
+}
+
+.modal-content .btn-group {
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #999;
+    margin-top: 10px;
+    padding: 15px 0 7px;
 }
 
 .modal-content #start-game {
@@ -139,8 +146,8 @@ main {
   align-items: center;
   width: 130px;
   height: 45px;
-  background: #001B79;
-  border: 2px solid #0766AD;
+  background: #EB5B00;
+  border: 2px solid #ff8906;
   outline: none;
   border-radius: 6px;
   text-decoration: none;
@@ -150,11 +157,13 @@ main {
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
   cursor: pointer;
   transition: .5s;
+  
 }
 
 .modal-content #start-game:hover {
-  background: #5563DE;
+  background: white;
   box-shadow: none;
+  color: #EB5B00;
 }
 
 .modal-content #back-btn {
@@ -164,12 +173,12 @@ main {
     width: 130px;
     height: 45px;
     background: white;
-    border: 2px solid #0766AD;
+    border: 2px solid #ff8906;
     outline: none;
     border-radius: 6px;
     text-decoration: none;
     font-size: 16px;
-    color: #001B79;
+    color: #EB5B00;
     font-weight: 600;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
@@ -177,7 +186,7 @@ main {
 }
 
 .modal-content #back-btn:hover {
-  background: #001B79;
+  background: #EB5B00;
   box-shadow: none;
   color: white;
 }
@@ -187,10 +196,11 @@ main {
   to { transform: scale(1); opacity: 1; }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.5); /* Mulai dari kecil (50% ukuran aslinya) */}
+  to {opacity: 1; transform: scale(1); /* Kembali ke ukuran normal */}
 }
+
 
 .container #game-container {
   position: relative;
@@ -212,9 +222,9 @@ main {
   width: 100%;
   max-width: 600px;
   text-align: center;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: zoomIn 0.5s ease-in-out;
   margin-bottom: 20px;
-  border: 2px solid #001B79;
+  border: 2px solid #ff8906;
   top: 20%;
 }
 
@@ -228,15 +238,15 @@ main {
 .game-header h1  {
   font-size: 32px;
   text-align: center;
-  background: linear-gradient(45deg, transparent, rgb(7, 102, 173), transparent);
+  background: linear-gradient(45deg, transparent, rgb(255, 165, 0), transparent);
   border-radius: 6px;
   color: white;
 }
 
 .game-info p {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
-  background: #001B79;
+  background: transparent;
   border-radius: 3px;
   padding: 10px;
   color: white;
@@ -261,8 +271,8 @@ main {
   align-items: center;
   width: 130px;
   height: 45px;
-  background: #001B79;
-  border: 2px solid #0766AD;
+  background: #EB5B00;
+  border: 2px solid #ff8906;
   outline: none;
   border-radius: 6px;
   text-decoration: none;
@@ -277,7 +287,7 @@ main {
 .controls #submit:hover {
   background: white;
   box-shadow: none;
-  color: #001B79;
+  color: #EB5B00;
 }
 
 .controls #clear {
@@ -287,12 +297,12 @@ main {
     width: 130px;
     height: 45px;
     background: white;
-    border: 2px solid #0766AD;
+    border: 2px solid #ff8906;
     outline: none;
     border-radius: 6px;
     text-decoration: none;
     font-size: 16px;
-    color: #001B79;
+    color: #EB5B00;
     font-weight: 600;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
@@ -301,7 +311,7 @@ main {
 }
 
 .controls #clear:hover {
-  background: #001B79;
+  background: #EB5B00;
   box-shadow: none;
   color: white;
 }
@@ -316,16 +326,17 @@ main {
   padding: 12px 20px;
   margin: 8px;
   font-size: 20px;
-  background: #001B79;
-  color: #fff;
+  background: white;
+  color: #EB5B00;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s;
-  border: 2px solid #fff;
+  border: 2px solid #ff8906;
 }
 
 .number:hover, .operator:hover {
-  background: #001B79;
+  background: #EB5B00;
+  color: white;
 }
 
 
@@ -339,26 +350,26 @@ main {
 }
 
 .exp-box {
-  border: 2px solid #001B79;
+  border: 2px solid #ff8906;
   border-radius: 8px;
   padding: 12px;
   margin: 8px;
   min-width: 60px;
   font-size: 20px;
   font-weight: 500;
-  color: #001B79;
+  color: #EB5B00;
   background: #f0f4ff;
 }
 
 
 .modal-content #continue-btn {
-  display: inline-flex;
+   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 130px;
   height: 45px;
-  background: #001B79;
-  border: 2px solid #0766AD;
+  background: #EB5B00;
+  border: 2px solid #ff8906;
   outline: none;
   border-radius: 6px;
   text-decoration: none;
@@ -373,43 +384,43 @@ main {
 .modal-content #continue-btn:hover {
   background: white;
   box-shadow: none;
-  color: #001B79;
+  color: #EB5B00;
 }
 
 .modal-content #stop-btn {
-  display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 130px;
-    height: 45px;
-    background: white;
-    border: 2px solid #0766AD;
-    outline: none;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 16px;
-    color: #001B79;
-    font-weight: 600;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    transition: .5s;
-    margin: 1%;
-}
-
-.modal-content #stop-btn:hover {
-  background: #001B79;
-  box-shadow: none;
-  color: white;
-}
-
-.modal-content #restart-game {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 130px;
   height: 45px;
-  background: #001B79;
-  border: 2px solid #0766AD;
+  background: #EB5B00;
+  border: 2px solid #ff8906;
+  outline: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: .5s;
+    margin: 1%;
+}
+
+.modal-content #stop-btn:hover {
+  background: white;
+  box-shadow: none;
+  color: #EB5B00;
+}
+
+.modal-content #restart-game, #restart-btn, #retry-stage-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 45px;
+  background: #EB5B00;
+  border: 2px solid #ff8906;
   outline: none;
   border-radius: 6px;
   text-decoration: none;
@@ -421,8 +432,13 @@ main {
   transition: .5s;
 }
 
-.modal-content #restart-game:hover {
+.modal-content #restart-game:hover, #restart-btn:hover,  #retry-stage-btn:hover {
   background: white;
   box-shadow: none;
-  color: #001B79;
+  color: #EB5B00;
 }
+
+#message {
+  color: white;
+}
+

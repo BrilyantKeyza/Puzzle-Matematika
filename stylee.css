@@ -127,7 +127,7 @@ main {
 }
 
 .modal-content p {
-  font-size: 22px;
+  font-size: 18px;
   margin: 8px;
 }
 
@@ -362,7 +362,7 @@ main {
 }
 
 
-.modal-content #continue-btn {
+.modal-content #continue-btn, #restart-game, #restart-btn, #retry-stage-btn {
    display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -381,13 +381,13 @@ main {
   transition: .5s;
 }
 
-.modal-content #continue-btn:hover {
+.modal-content #continue-btn:hover, #restart-game:hover, #restart-btn:hover,  #retry-stage-btn:hover {
   background: white;
   box-shadow: none;
   color: #EB5B00;
 }
 
-.modal-content #stop-btn {
+.modal-content #stop-btn, #back-to-home-btn ,#back-to-home-timeup-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -407,35 +407,10 @@ main {
   margin: 1%;
 }
 
-.modal-content #stop-btn:hover {
-  background: white;
-  box-shadow: none;
-  color: #EB5B00;
-}
-
-.modal-content #restart-game, #restart-btn, #retry-stage-btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 140px;
-  height: 45px;
+.modal-content #stop-btn:hover, #back-to-home-btn:hover, #back-to-home-timeup-btn:hover {
   background: #EB5B00;
-  border: 2px solid #ff8906;
-  outline: none;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 16px;
-  color: #fff;
-  font-weight: 600;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-  cursor: pointer;
-  transition: .5s;
-}
-
-.modal-content #restart-game:hover, #restart-btn:hover,  #retry-stage-btn:hover {
-  background: white;
   box-shadow: none;
-  color: #EB5B00;
+  color: white;
 }
 
 #message {
